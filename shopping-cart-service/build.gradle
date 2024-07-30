@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.example'
-version = "$orderProcessingInventoryVersion"
+version = "$orderProcessingShoppingCartVersion"
 
 bootJar {
     enabled = true
