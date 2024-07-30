@@ -1,0 +1,29 @@
+plugins {
+    id 'java-library'
+    id 'org.springframework.boot' version "$springBootVersion"
+    id 'io.spring.dependency-management' version "$springDependencyManagementVersion"
+}
+
+group = 'com.example'
+version = "$orderProcessingTestsVersion"
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+dependencies {
+    api "net.datafaker:datafaker:$dataFakerVersion"
+
+    api 'org.springframework.boot:spring-boot-starter-test'
+    api 'org.springframework.kafka:spring-kafka-test'
+    api "org.testcontainers:testcontainers:$testContainerVersion"
+    api "org.testcontainers:junit-jupiter:$testContainerVersion"
+    //api "org.testcontainers:Elasticsearch:$testContainerVersion"
+    api "org.testcontainers:postgresql:$testContainerVersion"
+    api "org.testcontainers:kafka:$testContainerVersion"
+    api "org.testcontainers:rabbitmq:$testContainerVersion"
+}

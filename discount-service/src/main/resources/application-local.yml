@@ -1,0 +1,53 @@
+data-source:
+  database: order-processing
+  schemas: discount
+  port: ${DATA_SOURCE_PORT:35432}
+  host: ${DATA_SOURCE_HOST:localhost}
+  username: ${DATA_SOURCE_USER:postgres}
+  password: ${DATA_SOURCE_PASSWORD:postgres}
+  url-postgres: jdbc:postgresql://${data-source.host}:${data-source.port}/${data-source.database}?currentSchema=${data-source.schemas}
+
+spring:
+  main:
+    banner-mode: console
+  application:
+    name: discount-service
+  datasource:
+    url: ${data-source.url-postgres}
+    username: ${data-source.username}
+    password: ${data-source.password}
+  liquibase:
+    url: ${data-source.url-postgres}
+    user: ${data-source.username}
+    password: ${data-source.password}
+    default-schema: ${data-source.schemas}
+    enabled: ${MIGRATION_DB_IS_ACTIVE:true}
+
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        cache:
+          use_structured_entries: true
+          use_second_level_cache: true
+          use_query_cache: false
+          region:
+            factory_class: org.hibernate.cache.jcache.internal.JCacheRegionFactory
+        jdbc:
+          batch_size: 20
+        order_updates: true
+        order_inserts: true
+        generate_statistics: true
+
+logging:
+  level:
+    com.example.discount: info
+    net.ttddyy.dsproxy.listener: debug
+    org.hibernate.cache: debug
+    org.ehcache: debug
+
+decorator:
+  datasource:
+    datasource-proxy:
+      format-sql: true
+      count-query: true

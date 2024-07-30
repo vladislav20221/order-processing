@@ -1,0 +1,14 @@
+final String TOKEN_VERSION = "."
+
+def incrementVersion (String version, String path) {
+    String currentVersion = project.properties[version]
+    def versions = currentVersion.tokenize(TOKEN_VERSION)
+    String m = versions[-1].toInteger() + 1
+    String newVersion = versions[0] + TOKEN_VERSION + versions[1] + TOKEN_VERSION + m
+
+    ant.propertyfile(file: path) {
+        entry(key: version, value: newVersion)
+    }
+
+    println "change version for: artifact = [" + version + "], oldVersion = [" + currentVersion + "], new-version = [" + newVersion + "]"
+}

@@ -1,0 +1,33 @@
+plugins {
+    id 'org.springframework.boot' version "$springBootVersion"
+    id 'io.spring.dependency-management' version "$springDependencyManagementVersion"
+}
+
+group = 'com.example'
+version = "$orderProcessingOrderProcessingVersion"
+
+bootJar {
+    enabled = true
+}
+
+jar {
+    enabled = false
+}
+
+test {
+    enabled = false
+}
+
+dependencies {
+    //implementation "com.example:starter:$orderProcessingStarterVersion"
+    //implementation "com.example:domain:$orderProcessingDomainVersion"
+    //testImplementation "com.example:test:$orderProcessingTestsVersion"
+
+    implementation project(":starter")
+    implementation project(":domain")
+    testImplementation project(":test")
+}
+
+test {
+    useJUnitPlatform()
+}

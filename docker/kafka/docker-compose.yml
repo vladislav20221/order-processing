@@ -1,0 +1,45 @@
+version: "3.9"
+name: klaster-kafka
+
+services:      
+    zookeeper:
+        extends:
+            file: zookeeper/zookeeper.yml
+            service: zookeeper
+            
+    broker-kafka-0:
+        depends_on:
+            - zookeeper 
+        extends:
+            file: Kafka/kafka.yml
+            service: broker-kafka-0
+    broker-kafka-1:
+        depends_on:
+            - zookeeper 
+        extends:
+            file: Kafka/kafka.yml
+            service: broker-kafka-1
+    broker-kafka-2:
+        depends_on:
+            - zookeeper 
+        extends:
+            file: Kafka/kafka.yml
+            service: broker-kafka-2
+            
+    kafdrop:
+        depends_on:
+            - broker-kafka-0
+            - broker-kafka-1
+            - broker-kafka-2
+        extends:
+            file: admin/admin.yml
+            service: kafka-drop
+            
+    kafkaui:
+        depends_on:
+            - broker-kafka-0
+            - broker-kafka-1
+            - broker-kafka-2
+        extends:
+            file: admin/admin.yml
+            service: kafka-ui  

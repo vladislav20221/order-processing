@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  nexus:
+    image: sonatype/nexus3:latest
+    container_name: nexus
+    volumes:
+      - nexus-data:/nexus-data
+    restart: no
+    environment:
+      NEXUS_CONTEXT: nexus
+    ports:
+      - "8081:8081"
+
+volumes:
+  nexus-data:
+    driver: local

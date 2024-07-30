@@ -1,0 +1,50 @@
+plugins {
+	id 'java'
+	id 'java-library'
+}
+
+group = 'com.example'
+version = '0.0.1'
+
+subprojects {
+	apply plugin: "java"
+	apply from: rootDir.toString().concat("/skripts/versioning.gradle")
+
+	java {
+		toolchain {
+			sourceCompatibility = JavaVersion.VERSION_21
+			targetCompatibility = JavaVersion.VERSION_21
+		}
+	}
+
+	repositories {
+		mavenCentral()
+
+		maven {
+			name 'nexus'
+			allowInsecureProtocol = true
+			url "http://localhost:8081/nexus"
+			credentials {
+				username "admin"
+				password "1e26ce11-f1bf-4b12-963a-36c877a49b5f"
+			}
+		}
+	}
+
+	dependencies {
+		annotationProcessor "org.hibernate.orm:hibernate-jpamodelgen:$hibernationVersion"
+
+		compileOnly "org.projectlombok:lombok:$lombokVersion"
+		annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+
+		implementation "org.mapstruct:mapstruct:$mapStructVersion"
+		annotationProcessor "org.mapstruct:mapstruct-processor:$mapStructVersion"
+
+		runtimeOnly "org.postgresql:postgresql"
+
+		testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+		testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+		testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	}
+
+}

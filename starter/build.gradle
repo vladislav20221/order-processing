@@ -1,0 +1,40 @@
+plugins {
+    id 'java-library'
+    id 'org.springframework.boot' version "$springBootVersion"
+    id 'io.spring.dependency-management' version "$springDependencyManagementVersion"
+}
+
+group = 'com.example'
+version = "$orderProcessingStarterVersion"
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+dependencies {
+    // Spring boot
+    api 'org.springframework.boot:spring-boot-starter-web'
+    api 'org.springframework.boot:spring-boot-starter-data-jpa'
+    api 'org.springframework.boot:spring-boot-starter-actuator'
+    api "org.springdoc:springdoc-openapi-starter-webmvc-ui:$springDockVersion"
+
+    // logger sql - query
+    api "com.github.gavlyukovskiy:datasource-proxy-spring-boot-starter:$datasourceProxyVersion"
+
+    // Hibernation or DB
+    api "org.hibernate.orm:hibernate-core:$hibernationVersion"
+    api "org.hibernate.orm:hibernate-jcache:$hibernationVersion"
+    api "org.ehcache:ehcache:$ehcacheVersion"
+    api "org.hibernate.validator:hibernate-validator:$hibernateValidatorVersion"
+    //api "com.vladmihalcea:hibernate-types-60:$hibernateTypeVersion"
+
+    api "org.liquibase:liquibase-core:$liquibaseVersion"
+    api "net.lbruun.springboot:preliquibase-spring-boot-starter:$preliquibaseStarterVersion"
+
+}
+
+test.onlyIf { false }
