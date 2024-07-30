@@ -1,0 +1,15 @@
+package com.example.domain.enums;
+
+public enum EventType {
+    NEW_CREATED,
+    INVENTORY_CHECKED,
+    PAYMENT_PROCESSED,
+    ORDER_PINGING,
+    ORDER_CREATED,
+    ORDER_CONFIRMED,
+    ORDER_PACKED,
+    ORDER_SHIPPED,
+    ORDER_DELIVERED,
+    ORDER_CANCELLED,
+    ORDER_RETURNED
+}

@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: admin
+      changes:
+        - addColumn:
+            tableName: product
+            schemaName: product
+            columns:
+              - column:
+                  name: category
+                  type: varchar(64)
+                  defaultValue: OTHER_GOODS
+                  constraints:
+                    nullable: false

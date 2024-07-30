@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres-wallets
+    restart: always
+    hostname: postgres-wallets
+    environment:
+      POSTGRES_DB: wallets
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 1111
+    ports:
+      - "5432:5432"

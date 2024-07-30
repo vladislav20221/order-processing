@@ -1,0 +1,105 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: admin
+      changes:
+        - createTable:
+            tableName: discount
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: created_at
+                  type: timestamptz
+                  constraints:
+                    nullable: false
+              - column:
+                  name: modified_at
+                  type: timestamptz
+                  constraints:
+                    nullable: true
+              - column:
+                  name: discount_type
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: discount_value
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: order_amount_min
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: order_amount_max
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: order_quantity
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_uid
+                  type: uuid
+                  autoIncrement: false
+                  constraints:
+                    nullable: true
+              - column:
+                  name: user_group
+                  type: varchar(64)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: product_category
+                  type: varchar(64)
+                  constraints:
+                    nullable: true
+
+              - column:
+                  name: start_date
+                  type: timestamptz
+                  constraints:
+                    nullable: false
+              - column:
+                  name: end_date
+                  type: timestamptz
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: is_active
+                  type: boolean
+                  defaultValueBoolean: false
+                  defaultOnNull: true
+                  constraints:
+                    nullable: true
+              - column:
+                  name: is_all_users
+                  type: boolean
+                  defaultValueBoolean: false
+                  defaultOnNull: true
+                  constraints:
+                    nullable: true
+              - column:
+                  name: is_all_group
+                  type: boolean
+                  defaultValueBoolean: false
+                  defaultOnNull: true
+                  constraints:
+                    nullable: true
+              - column:
+                  name: is_all_category
+                  type: boolean
+                  defaultValueBoolean: false
+                  defaultOnNull: true
+                  constraints:
+                    nullable: true

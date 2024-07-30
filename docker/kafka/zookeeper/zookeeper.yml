@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    hostname: zookeeper
+    restart: on-failure:2
+    environment:
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+    ports:
+      - 2181:2181
+      - 2182:2182
+      - 2183:2183

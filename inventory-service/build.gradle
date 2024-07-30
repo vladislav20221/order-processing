@@ -1,0 +1,38 @@
+plugins {
+    id 'org.springframework.boot' version "$springBootVersion"
+    id 'io.spring.dependency-management' version "$springDependencyManagementVersion"
+}
+
+group = 'com.example'
+version = "$orderProcessingInventoryVersion"
+
+bootJar {
+    enabled = true
+}
+
+jar {
+    enabled = false
+}
+
+test {
+    enabled = true
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //implementation "com.example:starter:$orderProcessingStarterVersion"
+    //implementation "com.example:domain:$orderProcessingDomainVersion"
+    //implementation "com.example:test:$orderProcessingTestsVersion"
+
+    implementation project(path: ":starter")
+    implementation project(path: ":domain")
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    testImplementation project(path: ":test")
+}
+
+test {
+    useJUnitPlatform()
+}

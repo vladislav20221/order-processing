@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/db.changeset-create-schema.yaml
+  - include:
+      file: db/changelog/changeset/db.changeset-create-table.yaml
+  - include:
+      file: db/changelog/changeset/db.changeset-update-table.yaml

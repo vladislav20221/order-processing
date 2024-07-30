@@ -1,0 +1,11 @@
+rootProject.name = 'order-processing'
+
+include 'domain'
+include 'starter'
+include 'test'
+
+include 'order-service'
+include 'event-publisher-service'
+include 'order-processing-service'
+include 'inventory-service'
+include 'discount-service'
