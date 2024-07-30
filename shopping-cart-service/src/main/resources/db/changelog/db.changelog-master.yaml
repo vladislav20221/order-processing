@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+        file: db/changelog/changeset/db.changeset-create-table-user-carts.yaml
+  - include:
+      file: db/changelog/changeset/db.changeset-create-table-cart-item.yaml

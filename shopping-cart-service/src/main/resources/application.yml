@@ -1,0 +1,62 @@
+data-source:
+  database: test
+  schemas: book_library
+  port: ${DATA_SOURCE_PORT:35432}
+  host: ${DATA_SOURCE_HOST:localhost}
+  username: ${DATA_SOURCE_USER:postgres}
+  password: ${DATA_SOURCE_PASSWORD:postgres}
+  driver: org.postgresql.Driver
+  url-postgres: jdbc:postgresql://${data-source.host}:${data-source.port}/${data-source.database}?currentSchema=${data-source.schemas}
+
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: ParserVakDissertation
+  datasource:
+    url: ${data-source.url-postgres}
+    username: ${data-source.username}
+    password: ${data-source.password}
+    driver-class-name: ${data-source.driver}
+  flyway:
+    url: ${data-source.url-postgres}
+    user: ${data-source.username}
+    password: ${data-source.password}
+    create-schemas: true
+    schemas: ${data-source.schemas}
+    enabled: ${FLYWAY_IS_ACTIVE:true}
+    driver-class-name: ${data-source.driver}
+
+  jpa:
+    #open-in-view: false
+    properties:
+      order_inserts: true
+      order_updates: true
+      order_delete: true
+      order_select: true
+      hibernate:
+        cache:
+          use_structured_entries: true
+          use_second_level_cache: true
+          use_query_cache: false
+          region:
+            factory_class: org.hibernate.cache.jcache.internal.JCacheRegionFactory
+        jdbc:
+          batch_size: 15
+        order_updates: true
+        order_inserts: true
+        generate_statistics: false
+
+logging:
+  level:
+    com.example.hibernation_problem: DEBUG
+    net.ttddyy.dsproxy.listener: DEBUG
+
+    org.hibernate.cache: DEBUG
+    org.ehcache: DEBUG
+
+decorator:
+  datasource:
+    datasource-proxy:
+      format-sql: true
+      count-query: true

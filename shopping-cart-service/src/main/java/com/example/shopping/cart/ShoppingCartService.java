@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @SpringBootApplication
 @EnableJpaAuditing
 public class ShoppingCartService {
+
     public static void main(String[] args) {
         final ConfigurableApplicationContext context =
                 SpringApplication.run(ShoppingCartService.class, args);
