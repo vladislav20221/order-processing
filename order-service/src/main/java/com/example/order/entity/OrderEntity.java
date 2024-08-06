@@ -22,7 +22,7 @@ import java.util.UUID;
 public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private UUID id;
     @Embedded
     private AuditTimestamp timestamp;
     private UUID productUid;

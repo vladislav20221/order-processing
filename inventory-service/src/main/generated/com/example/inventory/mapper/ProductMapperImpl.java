@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-07-18T13:48:39+0600",
+    date = "2024-08-06T13:16:06+0600",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.1 (Oracle Corporation)"
 )
 @Component
@@ -26,13 +26,12 @@ public class ProductMapperImpl implements ProductMapper {
         if ( entity.getId() != null ) {
             productDto.setId( entity.getId().toString() );
         }
-        productDto.setCreatedAt( entity.getCreatedAt() );
-        productDto.setModifiedAt( entity.getModifiedAt() );
         productDto.setName( entity.getName() );
         productDto.setDescription( entity.getDescription() );
         productDto.setQuantity( entity.getQuantity() );
         productDto.setSoldCount( entity.getSoldCount() );
         productDto.setPrice( entity.getPrice() );
+        productDto.setCategory( entity.getCategory() );
         productDto.setIsBlocked( entity.getIsBlocked() );
 
         return productDto;
@@ -49,13 +48,12 @@ public class ProductMapperImpl implements ProductMapper {
         if ( dto.getId() != null ) {
             productEntity.id( UUID.fromString( dto.getId() ) );
         }
-        productEntity.createdAt( dto.getCreatedAt() );
-        productEntity.modifiedAt( dto.getModifiedAt() );
         productEntity.name( dto.getName() );
         productEntity.description( dto.getDescription() );
         productEntity.quantity( dto.getQuantity() );
         productEntity.soldCount( dto.getSoldCount() );
         productEntity.price( dto.getPrice() );
+        productEntity.category( dto.getCategory() );
         productEntity.isBlocked( dto.getIsBlocked() );
 
         return productEntity.build();
@@ -73,6 +71,7 @@ public class ProductMapperImpl implements ProductMapper {
         productEntity.description( request.getDescription() );
         productEntity.quantity( request.getQuantity() );
         productEntity.price( request.getPrice() );
+        productEntity.category( request.getCategory() );
 
         return productEntity.build();
     }

@@ -60,3 +60,9 @@ decorator:
     datasource-proxy:
       format-sql: true
       count-query: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics, prometheus

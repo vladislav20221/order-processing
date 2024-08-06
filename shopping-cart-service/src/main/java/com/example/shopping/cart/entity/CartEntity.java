@@ -22,7 +22,7 @@ public class CartEntity {
     private UUID userUid;
     @Embedded
     private AuditTimestamp timestamp;
-    @OneToMany()
-    @JoinColumn()
+    private Boolean isBlocked;
+    @OneToMany(mappedBy = "cart")
     private List<CartItemEntity> carts;
 }

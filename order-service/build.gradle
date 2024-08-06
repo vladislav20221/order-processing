@@ -27,8 +27,12 @@ dependencies {
     implementation project(path: ":domain")
     testImplementation project(path: ":test")
 
-    implementation 'net.javacrumbs.shedlock:shedlock-spring:5.13.0'
-    implementation 'net.javacrumbs.shedlock:shedlock-provider-jdbc-template:5.13.0'
+    //compileOnly "org.springframework.statemachine:spring-statemachine-starter"
+    implementation "org.springframework.statemachine:spring-statemachine-core:4.0.0"
+    implementation "org.springframework.statemachine:spring-statemachine-uml:4.0.0"
+
+    implementation "net.javacrumbs.shedlock:shedlock-spring:5.13.0"
+    implementation "net.javacrumbs.shedlock:shedlock-provider-jdbc-template:5.13.0"
 }
 
 test {

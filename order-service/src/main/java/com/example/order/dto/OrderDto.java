@@ -18,8 +18,8 @@ import java.util.UUID;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class OrderDto {
-    @Schema(description = "order id")
-    private Long id;
+    @Schema(description = "order uid")
+    private UUID id;
     @Schema(description = "order created at")
     private LocalDateTime createdAt;
     @Schema(description = "order modified at")

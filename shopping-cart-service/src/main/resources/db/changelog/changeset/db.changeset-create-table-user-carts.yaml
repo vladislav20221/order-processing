@@ -28,3 +28,10 @@ databaseChangeLog:
                   autoIncrement: false
                   constraints:
                     nullable: true
+              - column:
+                  name: is_blocked
+                  type: boolean
+                  defaultValueBoolean: false
+                  defaultOnNull: true
+                  constraints:
+                    nullable: true

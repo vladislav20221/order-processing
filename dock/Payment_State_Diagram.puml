@@ -1,0 +1,15 @@
+@startuml
+[*] --> new
+new --> topUp
+new --> withDrywall
+
+topUp --> cancelled
+withDrywall --> cancelled
+
+cancelled --> [*]
+
+topUp --> complete
+withDrywall --> complete
+
+complete --> [*]
+@enduml

@@ -19,6 +19,12 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
+                  name: order_uid
+                  type: uuid
+                  autoIncrement: false
+                  constraints:
+                    nullable: false
+              - column:
                   name: cart_id
                   type: int
                   constraints:

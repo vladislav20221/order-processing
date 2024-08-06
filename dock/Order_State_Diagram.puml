@@ -1,0 +1,8 @@
+@startuml
+[*] --> new
+new --> processing
+processing --> cancelled
+cancelled --> [*]
+processing --> complete
+complete --> [*]
+@enduml
