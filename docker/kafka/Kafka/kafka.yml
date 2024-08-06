@@ -1,9 +1,8 @@
 version: '3.9'
 services:
   broker-kafka-0:
-    image: bitnami/kafka:latest
+    image: bitnami/kafka:${KAFKA_VERSION}
     hostname: broker-kafka-0
-    restart: on-failure:2
     environment:      
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_ADVERTISED_HOST_NAME: ${DOCKER_HOST_IP:-127.0.0.1}
@@ -19,9 +18,8 @@ services:
       - 9091:9091
       
   broker-kafka-1:
-    image: bitnami/kafka:latest
+    image: bitnami/kafka:${KAFKA_VERSION}
     hostname: broker-kafka-1
-    restart: on-failure:2
     environment:      
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_ADVERTISED_HOST_NAME: ${DOCKER_HOST_IP:-127.0.0.1}
@@ -37,9 +35,8 @@ services:
       - 9092:9092
 
   broker-kafka-2:
-    image: bitnami/kafka:latest
+    image: bitnami/kafka:${KAFKA_VERSION}
     hostname: broker-kafka-2
-    restart: on-failure:2
     environment:      
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_ADVERTISED_HOST_NAME: ${DOCKER_HOST_IP:-127.0.0.1}

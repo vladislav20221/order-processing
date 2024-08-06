@@ -1,24 +1,22 @@
 version: '3.9'
+
 services:  
   kafka-drop:
-    image: obsidiandynamics/kafdrop
+    image: obsidiandynamics/kafdrop:${KAFKA_DROP_VERSION}
     container_name: kafka-drop
     hostname: kafka-drop
-    restart: no  
     environment:
       KAFKA_BROKERCONNECT: broker-kafka-0:19091,broker-kafka-1:19092,broker-kafka-2:19093
     ports:
       - 9090:9000
       
   kafka-ui:
-    image: provectuslabs/kafka-ui:latest
+    image: provectuslabs/kafka-ui:${KAFKA_UI_VERSION}
     container_name: kafka-ui
-    hostname: kafka-ui    
-    restart: no
+    hostname: kafka-ui
     environment:
       DYNAMIC_CONFIG_ENABLED: true
       KAFKA_CLUSTERS_0_NAME: kafka_klaster_v1
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: broker-kafka-0:19091,broker-kafka-1:19092,broker-kafka-2:19093
     ports:
       - 8088:8080
-   

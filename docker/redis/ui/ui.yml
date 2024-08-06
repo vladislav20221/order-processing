@@ -2,8 +2,8 @@ version: '3.9'
 
 services:
   redis-insight:
-    image: redis/redisinsight:${REDIS_VERSION}
+    image: redis/redisinsight:${REDIS_INSIGHT_VERSION}
     container_name: redis-insight
     hostname: redis-insight
     ports:
-      - 5540:5540
+      - ${REDIS_INSIGHT_PORT}:5540

@@ -2,15 +2,14 @@ version: "3.9"
 
 services:
   nexus:
-    image: sonatype/nexus3:latest
+    image: sonatype/nexus3:${NEXUS_VERSION}
     container_name: nexus
     volumes:
       - nexus-data:/nexus-data
-    restart: no
     environment:
       NEXUS_CONTEXT: nexus
     ports:
-      - "8081:8081"
+      - ${REDIS_PORT}:8081
 
 volumes:
   nexus-data:

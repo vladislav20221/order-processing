@@ -1,13 +1,13 @@
 version: "3.9"
+
 services:
   postgres:
-    image: postgres:15-alpine
-    container_name: postgres-wallets
-    restart: always
-    hostname: postgres-wallets
+    image: postgres:${POSTGRES_VERSION}
+    container_name: postgres
+    hostname: postgres
     environment:
-      POSTGRES_DB: wallets
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: 1111
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - "5432:5432"
+      - ${POSTGRES_PORT}:5432
