@@ -3,35 +3,45 @@ name: cluster-order-processing
 
 services:
 
+  postgres:
+    extends:
+      file: postgres/postgresql.yml
+      service: postgres
+
   redis:
     extends:
-      file: redis/redis.yml
+      file: redis/redis/redis.yml
       service: redis
+
+  redis-insight:
+    extends:
+      file: redis/ui/ui.yml
+      service: redis-insight
 
   zookeeper:
     extends:
-      file: zookeeper/zookeeper.yml
+      file: kafka/zookeeper/zookeeper.yml
       service: zookeeper
 
   broker-kafka-0:
     depends_on:
       - zookeeper
     extends:
-      file: Kafka/kafka.yml
+      file: kafka/kafka/kafka.yml
       service: broker-kafka-0
 
   broker-kafka-1:
     depends_on:
       - zookeeper
     extends:
-      file: Kafka/kafka.yml
+      file: kafka/kafka/kafka.yml
       service: broker-kafka-1
 
   broker-kafka-2:
     depends_on:
       - zookeeper
     extends:
-      file: Kafka/kafka.yml
+      file: kafka/kafka/kafka.yml
       service: broker-kafka-2
 
   kafka-drop:
@@ -40,7 +50,7 @@ services:
       - broker-kafka-1
       - broker-kafka-2
     extends:
-      file: admin/admin.yml
+      file: kafka/admin/admin.yml
       service: kafka-drop
 
   kafka-ui:
@@ -49,5 +59,5 @@ services:
       - broker-kafka-1
       - broker-kafka-2
     extends:
-      file: admin/admin.yml
+      file: kafka/admin/admin.yml
       service: kafka-ui
